@@ -1,10 +1,10 @@
 # 🚀 DevOps Mastermind Lab
 
 
-> A community-driven open-source lab built by the IBM Simplilearn DevOps Engineer Master's Program (2025).
+A community-driven open-source lab built by the IBM Simplilearn DevOps Engineer Master's Program (2025).
 
 
-**Org:** `ibm-devops-engineers` (replace if you prefer a different org name)
+**Org:** `ibm-devops-engineers`
 
 
 **What this repo is:**
@@ -20,13 +20,22 @@
 
 ---
 
+## 🗂️ Repository Structure
 
-## Repo structure (starter)
+Here's the proposed clean structure for better navigation and scalability:
 
-devops-mastermind-lab/ ├── introductions/ # each student adds a markdown file with bio + 1 tiny deliverable ├── linux-basics/ ├── docker-projects/ ├── kubernetes-labs/ ├── cicd-pipelines/ ├── cloud-experiments/ ├── automation-scripts/ ├── projects-capstone/ ├── .github/ │ ├── workflows/ │ └── ISSUE_TEMPLATE/ ├── CONTRIBUTING.md ├── CODE_OF_CONDUCT.md ├── README.md └── LICENSE
+```
 
+devops-mastermind-lab/
+├── 📂 profiles/          # Students' intro PRs with profile and first script
+├── 📂 scripts/           # Bash, Python, and automation scripts
+├── 📂 docker/            # Dockerfiles and containerization templates
+├── 📂 kubernetes/        # Kubernetes manifests and Helm charts
+├── 📂 terraform/         # Infrastructure as Code modules
+├── 📂 cicd-pipelines/    # GitHub Actions, Jenkins, and other CI/CD pipelines
+└── README.md             # This file
 
-
+```
 ---
 
 
