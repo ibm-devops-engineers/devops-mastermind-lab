@@ -1,8 +1,7 @@
 # 👥 Contributors
 
-This file auto-updates whenever a Pull Request is merged.  
-Thanks to all the amazing DevOps engineers building this repo together 🚀
+This file auto-updates whenever a Pull Request is merged. 🚀
 
 | Rank | Contributor | Contributions |
 | ---- | ----------- | ------------- |
-| 🥇   |  Shoiab     | 2             |
+| 🥇 | [@mohammedinzi](https://github.com/mohammedinzi) | 3 |
