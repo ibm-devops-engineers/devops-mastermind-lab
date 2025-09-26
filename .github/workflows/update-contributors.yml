@@ -1,22 +1,52 @@
-# name: Update Contributors
-# on:
-#   push:
-# 	branches: [ main ]
+name: Update Contributors
 
+on:
+  push:
+    branches:
+      - main
 
-# jobs:
-# contributors:
-# runs-on: ubuntu-latest
-# steps:
-# - uses: actions/checkout@v4
-# - name: Generate CONTRIBUTORS.md
-#   run: |
-# 	echo "# Contributors" > CONTRIBUTORS.md
-# 	git shortlog -sn --no-merges | awk '{$1=$1; count=$1; name=substr($0,index($0,$2)); printf "- %s (%s contributions)\n", name, count}' >> CONTRIBUTORS.md
-# - name: Commit CONTRIBUTORS.md
-#   uses: EndBug/add-and-commit@v9
-#   with:
-# 	add: CONTRIBUTORS.md
-# 	author_name: github-actions
-# 	author_email: github-actions@github.com
-# 	message: chore: update CONTRIBUTORS.md
+jobs:
+  update-contributors:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate contributors list
+        id: contributors
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const contributors = await github.paginate(
+              github.rest.repos.listContributors,
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+              }
+            );
+
+            let table = `# 👥 Contributors\n\n`;
+            table += `This file auto-updates whenever a Pull Request is merged. 🚀\n\n`;
+            table += `| Rank | Contributor | Contributions |\n`;
+            table += `| ---- | ----------- | ------------- |\n`;
+
+            contributors
+              .sort((a, b) => b.contributions - a.contributions)
+              .forEach((contrib, index) => {
+                const rank = index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : index + 1;
+                table += `| ${rank} | [@${contrib.login}](${contrib.html_url}) | ${contrib.contributions} |\n`;
+              });
+
+            require("fs").writeFileSync("CONTRIBUTORS.md", table);
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add CONTRIBUTORS.md
+          git commit -m "docs: update contributors list [skip ci]" || echo "No changes to commit"
+          git push

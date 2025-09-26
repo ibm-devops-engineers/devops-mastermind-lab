@@ -1,7 +1,5 @@
 ## .github/ISSUE_TEMPLATE/introductions.md
 
-
-```markdown
 ---
 name: Introductions
 about: Add your intro and tiny deliverable

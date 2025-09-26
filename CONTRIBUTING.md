@@ -1,7 +1,3 @@
-## CONTRIBUTING.md
-
-
-```markdown
 # Contributing — DevOps Mastermind Lab
 
 
