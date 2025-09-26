@@ -1,12 +1,12 @@
 # 🚀 DevOps Mastermind Lab
 
-> **A community-driven open-source portfolio lab by 50+ aspiring DevOps engineers**
-> Learn. Build. Collaborate. Get hired.
+**A community-driven open-source portfolio lab by 50+ aspiring DevOps engineers**
+Learn. Build. Collaborate. Get hired.
 
 ![Contributors](https://img.shields.io/github/contributors/ibm-devops-engineers/devops-mastermind-lab?color=blue)
 ![Issues](https://img.shields.io/github/issues/ibm-devops-engineers/devops-mastermind-lab)
 ![Pull Requests](https://img.shields.io/github/issues-pr/ibm-devops-engineers/devops-mastermind-lab)
-![License](https://img.shields.io/github/license/ibm-devops-engineers/devops-mastermind-lab)
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
 ---
 
