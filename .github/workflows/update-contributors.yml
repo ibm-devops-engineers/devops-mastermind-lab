@@ -1,0 +1,22 @@
+# name: Update Contributors
+# on:
+#   push:
+# 	branches: [ main ]
+
+
+# jobs:
+# contributors:
+# runs-on: ubuntu-latest
+# steps:
+# - uses: actions/checkout@v4
+# - name: Generate CONTRIBUTORS.md
+#   run: |
+# 	echo "# Contributors" > CONTRIBUTORS.md
+# 	git shortlog -sn --no-merges | awk '{$1=$1; count=$1; name=substr($0,index($0,$2)); printf "- %s (%s contributions)\n", name, count}' >> CONTRIBUTORS.md
+# - name: Commit CONTRIBUTORS.md
+#   uses: EndBug/add-and-commit@v9
+#   with:
+# 	add: CONTRIBUTORS.md
+# 	author_name: github-actions
+# 	author_email: github-actions@github.com
+# 	message: chore: update CONTRIBUTORS.md
