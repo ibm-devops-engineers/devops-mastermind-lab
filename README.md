@@ -29,50 +29,52 @@ Students → This repo is your **DevOps cookbook + playground**.
 ## 📂 Repository Structure
 
 ```
+
 devops-mastermind-lab/
 │
-├── linux-basics/           
-│   ├── cheatsheet.md
-│   ├── log-parser.sh
+├── linux-basics/           
+│   ├── cheatsheet.md
+│   ├── log-parser.sh
 │
-├── docker-projects/        
-│   ├── flask-docker-demo/
-│   ├── node-docker-demo/
+├── docker-projects/        
+│   ├── flask-docker-demo/
+│   ├── node-docker-demo/
 │
-├── kubernetes-labs/        
-│   ├── hello-k8s/
-│   ├── monitoring-setup/
+├── kubernetes-labs/        
+│   ├── hello-k8s/
+│   ├── monitoring-setup/
 │
-├── cicd-pipelines/         
-│   ├── jenkins-pipeline.groovy
-│   ├── github-actions-demo.yml
+├── cicd-pipelines/         
+│   ├── jenkins-pipeline.groovy
+│   ├── github-actions-demo.yml
 │
-├── cloud-experiments/      
-│   ├── terraform-aws-vpc/
-│   ├── azure-devops-pipeline/
+├── cloud-experiments/      
+│   ├── terraform-aws-vpc/
+│   ├── azure-devops-pipeline/
 │
-├── automation-scripts/     
-│   ├── ansible-playbook.yml
-│   ├── auto-backup.py
+├── automation-scripts/     
+│   ├── ansible-playbook.yml
+│   ├── auto-backup.py
 │
-├── projects-capstone/      
-│   ├── ecommerce-k8s/
-│   ├── devsecops-demo/
+├── projects-capstone/      
+│   ├── ecommerce-k8s/
+│   ├── devsecops-demo/
 │
-├── introductions/          
-│   ├── STUDENTS_TEMPLATE.md
+├── introductions/          
+│   ├── STUDENTS\_TEMPLATE.md
 │
-├── .github/                
-│   ├── ISSUE_TEMPLATE/
-│   ├── PULL_REQUEST_TEMPLATE.md
-│   ├── workflows/
+├── .github/                
+│   ├── ISSUE\_TEMPLATE/
+│   ├── PULL\_REQUEST\_TEMPLATE.md
+│   ├── workflows/
 │
-├── CODE_OF_CONDUCT.md
+├── CODE\_OF\_CONDUCT.md
 ├── CONTRIBUTING.md
 ├── MAINTAINERS.md
 ├── labels.md
 ├── LICENSE
 └── README.md
+
 ```
 
 ---
@@ -108,12 +110,8 @@ Every weekend we drop **new challenges** aligned with the program:
 
 | Rank | Contributor | Contributions |
 | ---- | ----------- | ------------- |
-| 🥇 1 | Mohammed    | 5 PRs merged  |
-| 🥈 2 | Student X   | 3 PRs merged  |
-| 🥉 3 | Student Y   | 2 PRs merged  |
-
-*(Updated weekly via GitHub Actions 🤖)*
-
+| 🥇 | [@mohammedinzi](https://github.com/mohammedinzi) | 6 |
+| 🥈 | [@github-actions[bot]](https://github.com/apps/github-actions) | 1 |
 ---
 
 ## 🗺️ Roadmap
@@ -141,6 +139,3 @@ Every weekend we drop **new challenges** aligned with the program:
 
 This repo is powered by **50+ DevOps Engineers-in-training** at IBM Simplilearn.
 Want to contribute or use this as a study guide? **Fork it, build, and grow with us!**
-
----
-
