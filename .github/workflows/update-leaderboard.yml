@@ -1,0 +1,83 @@
+name: Update Leaderboard
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  update-leaderboard:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: read
+
+    steps:
+      # Step 1: Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Generate leaderboard content using GitHub Script
+      - name: Generate leaderboard content
+        id: leaderboard
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const contributors = await github.paginate(
+              github.rest.repos.listContributors,
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+              }
+            );
+
+            // Start of the markdown table content
+            let tableContent = '| Rank | Contributor | Contributions |\n';
+            tableContent += '| ---- | ----------- | ------------- |\n';
+
+            contributors
+              .sort((a, b) => b.contributions - a.contributions)
+              .filter(contrib => !contrib.login.endsWith('[bot]')) // Exclude bots
+              .forEach((contrib, index) => {
+                const rank = index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : index + 1;
+                tableContent += `| ${rank} | [@${contrib.login}](${contrib.html_url}) | ${contrib.contributions} |\n`;
+              });
+
+            core.setOutput('leaderboard_markdown', tableContent);
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Step 3: Replace content between markers in README.md
+      - name: Update README.md with Leaderboard
+        run: |
+          # Define start and end markers
+          START_MARKER="<!-- START_LEADERBOARD -->"
+          END_MARKER="<!-- END_LEADERBOARD -->"
+
+          # Get leaderboard table from previous step
+          LEADERBOARD_CONTENT="${{ steps.leaderboard.outputs.leaderboard_markdown }}"
+
+          # Build replacement block
+          REPLACEMENT="${START_MARKER}\n${LEADERBOARD_CONTENT}${END_MARKER}"
+
+          # Escape special characters for sed
+          ESCAPED_REPLACEMENT=$(printf '%s\n' "$REPLACEMENT" | sed -e 's/[\/&|]/\\&/g')
+
+          # Replace content between markers in README.md
+          sed -i "/${START_MARKER}/,/${END_MARKER}/c\\${ESCAPED_REPLACEMENT}" README.md
+
+      # Step 4: Commit and push changes
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Commit only if README.md has changed
+          if git diff --exit-code README.md; then
+            echo "No changes to commit in README.md"
+          else
+            git add README.md
+            git commit -m "docs: update leaderboard in README.md [skip ci]"
+            git push
+          fi
