@@ -112,8 +112,8 @@ Every weekend we drop **new challenges** aligned with the program:
 | Rank | Contributor | Contributions |
 | ---- | ----------- | ------------- |
 | 🥇 | [@mohammedinzi](https://github.com/mohammedinzi) | 6 |
-| 🥈 | [@github-actions[bot]](https://github.com/apps/github-actions) | 1 |
 <!-- END_LEADERBOARD -->
+
 
 ---
 
