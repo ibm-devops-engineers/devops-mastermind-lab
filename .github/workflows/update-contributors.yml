@@ -1,12 +1,13 @@
-name: Update Contributors
+name: Update Leaderboard
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch: # Allows manual run
 
 jobs:
-  update-contributors:
+  update-leaderboard:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -16,8 +17,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Generate contributors list
-        id: contributors
+      - name: Generate leaderboard content
+        id: leaderboard
         uses: actions/github-script@v7
         with:
           script: |
@@ -29,24 +30,52 @@ jobs:
               }
             );
 
-            let table = `# 👥 Contributors\n\n`;
-            table += `This file auto-updates whenever a Pull Request is merged. 🚀\n\n`;
-            table += `| Rank | Contributor | Contributions |\n`;
-            table += `| ---- | ----------- | ------------- |\n`;
+            // Start of the markdown table content
+            let tableContent = '| Rank | Contributor | Contributions |\n';
+            tableContent += '| ---- | ----------- | ------------- |\n';
 
             contributors
               .sort((a, b) => b.contributions - a.contributions)
+              .filter(contrib => !contrib.login.endsWith('[bot]')) // Exclude bots from the leaderboard
               .forEach((contrib, index) => {
                 const rank = index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : index + 1;
-                table += `| ${rank} | [@${contrib.login}](${contrib.html_url}) | ${contrib.contributions} |\n`;
+                // Use contrib.login for the link text, which is the username
+                tableContent += `| ${rank} | [@${contrib.login}](${contrib.html_url}) | ${contrib.contributions} |\n`;
               });
+            
+            // Set the generated table as an output variable
+            core.setOutput('leaderboard_markdown', tableContent);
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+      - name: Update README.md with Leaderboard
+        run: |
+          # The marker comments are used to define the block to replace
+          START_MARKER=""
+          END_MARKER=""
+          
+          # Get the generated table content from the previous step
+          LEADERBOARD_CONTENT="${{ steps.leaderboard.outputs.leaderboard_markdown }}"
+          
+          # Create the full replacement block
+          REPLACEMENT="${START_MARKER}\n${LEADERBOARD_CONTENT}${END_MARKER}"
+          
+          # Escape special characters for sed (like '&', '\', '/')
+          ESCAPED_REPLACEMENT=$(echo "$REPLACEMENT" | sed -e 's/[\/&]/\\&/g')
 
-            require("fs").writeFileSync("CONTRIBUTORS.md", table);
+          # Use sed to replace the content between the markers in README.md
+          # This command targets the block starting with START_MARKER and ending with END_MARKER
+          sed -i "/${START_MARKER}/,/${END_MARKER}/c\\${ESCAPED_REPLACEMENT}" README.md
 
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add CONTRIBUTORS.md
-          git commit -m "docs: update contributors list [skip ci]" || echo "No changes to commit"
-          git push
+          
+          if git diff --exit-code README.md; then
+            echo "No changes to commit in README.md"
+          else
+            git add README.md
+            git commit -m "docs: update leaderboard in README.md [skip ci]"
+            git push
+          fi
