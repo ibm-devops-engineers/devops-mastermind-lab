@@ -16,54 +16,53 @@ This repo is a **hands-on DevOps learning hub** built by students from the **IBM
 
 We’re transforming course modules into **real-world labs**, **automation scripts**, and **mini-projects** that mirror what top tech companies expect.
 
-* 👩‍💻 **50+ contributors** building in public  
-* ⚡ **Weekly challenges** tied to course modules  
-* 🌍 **Open-source playground** for Linux, Docker, Kubernetes, CI/CD, Cloud, Terraform, Ansible & more  
-* 🏆 **Leaderboard gamification** (top contributors recognized)
+- 👩‍💻 **50+ contributors** building in public  
+- ⚡ **Weekly challenges** tied to course modules  
+- 🌍 **Open-source playground** for Linux, Docker, Kubernetes, CI/CD, Cloud, Terraform, Ansible & more  
+- 🏆 **Leaderboard gamification** (top contributors recognized)
 
-> **Recruiters** → This repo is **proof of teamwork, collaboration, and applied skills**.  
+> **Recruiters** → This repo is proof of **teamwork, collaboration, and applied skills**.  
 > **Students** → Your **DevOps cookbook + playground**.
 
 ---
 
 ## 📂 Repository Structure
 
-```
-
+```plaintext
 devops-mastermind-lab/
 │
-├── linux-basics/
+├── linux-basics/          
 │   ├── cheatsheet.md
 │   ├── log-parser.sh
 │
-├── docker-projects/
+├── docker-projects/       
 │   ├── flask-docker-demo/
 │   ├── node-docker-demo/
 │
-├── kubernetes-labs/
+├── kubernetes-labs/       
 │   ├── hello-k8s/
 │   ├── monitoring-setup/
 │
-├── cicd-pipelines/
+├── cicd-pipelines/        
 │   ├── jenkins-pipeline.groovy
 │   ├── github-actions-demo.yml
 │
-├── cloud-experiments/
+├── cloud-experiments/     
 │   ├── terraform-aws-vpc/
 │   ├── azure-devops-pipeline/
 │
-├── automation-scripts/
+├── automation-scripts/    
 │   ├── ansible-playbook.yml
 │   ├── auto-backup.py
 │
-├── projects-capstone/
+├── projects-capstone/     
 │   ├── ecommerce-k8s/
 │   ├── devsecops-demo/
 │
-├── introductions/
+├── introductions/         
 │   ├── STUDENTS_TEMPLATE.md
 │
-├── .github/
+├── .github/               
 │   ├── ISSUE_TEMPLATE/
 │   ├── PULL_REQUEST_TEMPLATE.md
 │   ├── workflows/
@@ -74,8 +73,7 @@ devops-mastermind-lab/
 ├── labels.md
 ├── LICENSE
 └── README.md
-
-```
+````
 
 ---
 
@@ -83,23 +81,23 @@ devops-mastermind-lab/
 
 Every weekend we drop **new challenges** aligned with the program:
 
-* **Week 1** → Write a shell script for log analysis  
-* **Week 2** → Dockerize a sample app  
-* **Week 3** → Deploy that app on Kubernetes  
-* **Week 4** → Create a GitHub Actions CI/CD pipeline  
-* **Week 5** → Deploy infra with Terraform  
-* **Week 6** → Add monitoring with Prometheus + Grafana  
+* **Week 1** → Write a shell script for log analysis
+* **Week 2** → Dockerize a sample app
+* **Week 3** → Deploy that app on Kubernetes
+* **Week 4** → Create a GitHub Actions CI/CD pipeline
+* **Week 5** → Deploy infra with Terraform
+* **Week 6** → Add monitoring with Prometheus + Grafana
 
-👉 Students submit PRs → Best ones get merged + spotlighted!
+👉 Students submit PRs → **Best ones get merged + spotlighted!**
 
 ---
 
 ## 🤝 How to Contribute
 
-1. **Fork** this repo  
-2. Create a new branch → `feature/my-awesome-script`  
-3. Add your code in the correct folder  
-4. Submit a Pull Request (PR)  
+1. **Fork** this repo
+2. Create a new branch → `feature/my-awesome-script`
+3. Add your code in the correct folder
+4. Submit a Pull Request (PR)
 5. Add yourself under `introductions/`
 
 📌 Read the [CONTRIBUTING.md](CONTRIBUTING.md) for full guidelines.
@@ -109,36 +107,39 @@ Every weekend we drop **new challenges** aligned with the program:
 ## 🌟 Leaderboard
 
 <!-- START_LEADERBOARD -->
-| Rank | Contributor | Contributions |
-| ---- | ----------- | ------------- |
-| 🥇 | [@mohammedinzi](https://github.com/mohammedinzi) | 6 |
-<!-- END_LEADERBOARD -->
 
+| Rank | Contributor                                      | Contributions |
+| ---- | ------------------------------------------------ | ------------- |
+| 🥇   | [@mohammedinzi](https://github.com/mohammedinzi) | 6             |
+
+<!-- END_LEADERBOARD -->
 
 ---
 
 ## 🗺️ Roadmap
 
-* ✅ Linux Fundamentals  
-* ✅ Docker Basics  
-* 🚧 Kubernetes Deployments  
-* 🚧 CI/CD Pipelines  
-* 🚧 Cloud Infra (AWS, Azure, GCP)  
-* 🔜 Monitoring & Security  
-* 🔜 End-to-End Capstone Projects  
+* ✅ Linux Fundamentals
+* ✅ Docker Basics
+* 🚧 Kubernetes Deployments
+* 🚧 CI/CD Pipelines
+* 🚧 Cloud Infra (AWS, Azure, GCP)
+* 🔜 Monitoring & Security
+* 🔜 End-to-End Capstone Projects
 
 ---
 
 ## ✨ Why This Repo Matters
 
-* 📚 **Learn by doing** → hands-on labs  
-* 🤝 **Build in public** → GitHub history proves your skills  
-* 🧑‍💼 **Recruiter-friendly** → collaborative, real-world projects  
-* 🔥 **Community-driven** → peer learning + networking  
+* 📚 **Learn by doing** → hands-on labs
+* 🤝 **Build in public** → GitHub history proves your skills
+* 🧑‍💼 **Recruiter-friendly** → collaborative, real-world projects
+* 🔥 **Community-driven** → peer learning + networking
 
 ---
 
 ## 📢 Join Us
 
-This repo is powered by **50+ DevOps Engineers-in-training** at IBM Simplilearn.  
+This repo is powered by **50+ DevOps Engineers-in-training** at IBM Simplilearn.
 Want to contribute or use this as a study guide? **Fork it, build, and grow with us!**
+
+````
